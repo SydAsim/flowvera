@@ -140,17 +140,17 @@ export default function DemoVisualizer() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-12">
       {/* Tabs */}
-      <div className="flex flex-wrap gap-2 pb-2 border-b border-white/5">
+      <div className="flex flex-wrap gap-3 pb-3 border-b border-card-border">
         {DEMO_SYSTEMS.map((item) => (
           <button
             key={item.id}
             onClick={() => setActiveTab(item.id)}
-            className={`px-4 py-2.5 rounded-full text-xs font-semibold tracking-wide border transition-all cursor-pointer ${
+            className={`px-5 py-3.5 rounded-full text-sm font-bold tracking-wide border transition-all cursor-pointer ${
               activeTab === item.id
-                ? "bg-cyan-500/10 text-cyan-400 border-cyan-400/30 shadow-lg shadow-cyan-500/5 font-bold"
-                : "bg-white/[0.02] text-slate-400 border-white/5 hover:text-white"
+                ? "bg-cyan-500/10 text-cyan-400 border-cyan-400/30 shadow-lg shadow-cyan-500/5 font-extrabold"
+                : "bg-card text-muted-foreground border-card-border hover:text-foreground"
             }`}
           >
             {item.title}
@@ -159,59 +159,59 @@ export default function DemoVisualizer() {
       </div>
 
       {/* Main Sandbox Grid */}
-      <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+      <div className="grid lg:grid-cols-12 gap-12 items-stretch">
         {/* Left Side: Simulation Steps & Visual Map */}
-        <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-1 rounded bg-slate-800 text-[10px] text-slate-300 uppercase tracking-widest font-mono font-medium">
+        <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <span className="px-3 py-1 rounded bg-muted text-xs text-muted-foreground uppercase tracking-widest font-mono font-bold">
                 {activeDemo.category}
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-              <span className="text-xs text-emerald-400 font-mono">Sim Sandbox Sandbox-v1.4</span>
+              <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span className="text-sm text-emerald-400 font-mono">Sim Sandbox Sandbox-v1.4</span>
             </div>
 
-            <h4 className="text-2xl font-bold font-display text-white">{activeDemo.title}</h4>
-            <p className="text-sm text-slate-300 leading-relaxed max-w-xl">
-              <span className="text-cyan-400 font-semibold">Trigger:</span> {activeDemo.trigger}
+            <h4 className="text-3xl font-bold font-display text-foreground">{activeDemo.title}</h4>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
+              <span className="text-cyan-400 font-bold">Trigger:</span> {activeDemo.trigger}
             </p>
 
             {/* Simulated Steps Progress Visualizer */}
-            <div className="space-y-3.5 mt-6">
+            <div className="space-y-4 mt-8">
               {activeDemo.flow.map((stepText, index) => {
                 const isCompleted = index < currentStep;
                 const isCurrent = index === currentStep;
                 return (
                   <div
                     key={index}
-                    className={`p-3.5 rounded-xl border transition-all duration-300 flex gap-3 items-start ${
+                    className={`glass-card-hover p-5 rounded-2xl border transition-all duration-300 flex gap-4 items-start ${
                       isCurrent
-                        ? "bg-cyan-950/15 border-cyan-400/30 shadow-md shadow-cyan-400/5 translate-x-1"
+                        ? "bg-cyan-500/10 border-cyan-400/40 shadow-md shadow-cyan-400/10 translate-x-1 backdrop-blur-xl"
                         : isCompleted
-                        ? "bg-white/[0.01] border-white/10 opacity-75"
-                        : "bg-white/[0.01] border-white/5 opacity-55"
+                        ? "glass-card opacity-80"
+                        : "glass-card opacity-50"
                     }`}
                   >
                     <div
-                      className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-mono text-[10px] font-bold mt-0.5 ${
+                      className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 font-mono text-xs font-bold mt-0.5 ${
                         isCurrent
-                          ? "bg-cyan-400 text-slate-950 animate-bounce"
+                          ? "bg-cyan-400 text-background animate-bounce"
                           : isCompleted
-                          ? "bg-emerald-500 text-white"
-                          : "bg-slate-800 text-slate-400"
+                          ? "bg-emerald-500 text-foreground"
+                          : "bg-muted text-muted-foreground"
                       }`}
                     >
                       {isCompleted ? "✓" : index + 1}
                     </div>
                     <div>
                       <p
-                        className={`text-xs font-semibold ${
-                          isCurrent ? "text-cyan-300" : isCompleted ? "text-slate-300" : "text-slate-400"
+                        className={`text-sm md:text-base font-bold ${
+                          isCurrent ? "text-cyan-300" : isCompleted ? "text-muted-foreground" : "text-muted-foreground"
                         }`}
                       >
                         Step {index + 1}
                       </p>
-                      <p className="text-xs text-slate-300 mt-1 leading-relaxed">{stepText}</p>
+                      <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{stepText}</p>
                     </div>
                   </div>
                 );
@@ -220,54 +220,54 @@ export default function DemoVisualizer() {
           </div>
 
           {/* Controls Panel */}
-          <div className="p-4 rounded-xl bg-slate-900/60 border border-white/5 flex flex-wrap gap-3 items-center justify-between">
-            <div className="flex gap-2">
+          <div className="glass-card p-6 flex flex-wrap gap-4 items-center justify-between rounded-2xl">
+            <div className="flex gap-3">
               <button
                 onClick={startSimulation}
                 disabled={isRunning}
-                className="rounded-lg px-4 py-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 text-xs font-bold transition-all flex items-center gap-1.5 shadow-md shadow-cyan-400/10 cursor-pointer disabled:opacity-50"
+                className="rounded-lg px-5 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-background text-sm font-extrabold transition-all flex items-center gap-2 shadow-md shadow-cyan-400/10 cursor-pointer disabled:opacity-50"
               >
-                <Play className="w-3.5 h-3.5" />
+                <Play className="w-4 h-4" />
                 Initialize Simulation
               </button>
 
               <button
                 onClick={resetSimulation}
-                className="rounded-lg p-2 bg-white/5 border border-white/10 text-white hover:bg-white/10 text-xs font-bold transition-all cursor-pointer flex items-center justify-center"
+                className="rounded-lg p-3 bg-card border border-card-border text-foreground hover:bg-white/10 text-sm font-bold transition-all cursor-pointer flex items-center justify-center"
                 title="Reset Sim"
               >
-                <RotateCcw className="w-3.5 h-3.5" />
+                <RotateCcw className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="text-[11px] font-mono text-slate-400 flex items-center gap-1.5">
-              <span className={`w-2 h-2 rounded-full ${isRunning ? "bg-amber-400 animate-ping" : "bg-emerald-400"}`} />
+            <div className="text-xs md:text-sm font-mono text-muted-foreground flex items-center gap-2">
+              <span className={`w-2.5 h-2.5 rounded-full ${isRunning ? "bg-amber-400 animate-ping" : "bg-emerald-400"}`} />
               {isRunning ? "Simulating execution steps..." : "Simulation Standby"}
             </div>
           </div>
         </div>
 
         {/* Right Side: Virtual Simulator Devices (Phone Screen & Console Logs) */}
-        <div className="lg:col-span-5 flex flex-col gap-4">
+        <div className="lg:col-span-5 flex flex-col gap-6">
           {/* Virtual Mobile Screen */}
-          <div className="w-full shrink-0 h-[340px] rounded-3xl bg-slate-950 border border-white/15 p-4 flex flex-col justify-between relative shadow-2xl overflow-hidden self-center">
+          <div className="glass-card w-full shrink-0 h-[420px] p-6 flex flex-col justify-between relative shadow-2xl overflow-hidden self-center rounded-3xl">
             {/* Phone Top Notch decoration */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-4 bg-slate-900 rounded-b-xl border-x border-b border-white/10 z-20 flex items-center justify-center">
-              <div className="w-2.5 h-2.5 rounded-full bg-slate-950" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-5 bg-input-bg rounded-b-xl border-x border-b border-card-border z-20 flex items-center justify-center">
+              <div className="w-3 h-3 rounded-full bg-background" />
             </div>
 
             {/* Virtual Sim Header */}
-            <div className="flex items-center gap-2 pb-2.5 border-b border-white/10 pt-2 z-10">
-              <div className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider">Flowvero Auto-Triage v4.9</span>
+            <div className="flex items-center gap-2.5 pb-3 border-b border-card-border pt-3 z-10">
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+              <span className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Flowvero Auto-Triage v4.9</span>
             </div>
 
             {/* Messages body (overflow scroll) */}
-            <div className="flex-1 overflow-y-auto space-y-3 py-3 scrollbar-none text-[11px] pr-1">
+            <div className="flex-1 overflow-y-auto space-y-4 py-4 scrollbar-none text-xs md:text-sm pr-1">
               {phoneMessages.length === 0 ? (
-                <div className="h-full flex flex-col items-center justify-center text-center text-slate-500 py-12">
-                  <Smartphone className="w-8 h-8 text-slate-700 mb-2 animate-bounce" />
-                  <p className="text-xs">Visual phone simulator waiting...<br/>Press 'Initialize' to start</p>
+                <div className="h-full flex flex-col items-center justify-center text-center text-muted-foreground py-16">
+                  <Smartphone className="w-10 h-10 text-muted-foreground mb-3 animate-bounce" />
+                  <p className="text-sm">Visual phone simulator waiting...<br/>Press 'Initialize' to start</p>
                 </div>
               ) : (
                 phoneMessages.map((msg, index) => (
@@ -278,51 +278,51 @@ export default function DemoVisualizer() {
                     }`}
                   >
                     <div
-                      className={`px-3 py-2 rounded-2xl ${
+                      className={`px-4 py-2.5 rounded-2xl leading-relaxed ${
                         msg.sender === "user"
-                          ? "bg-cyan-500 text-slate-950 rounded-tr-none font-medium"
+                          ? "bg-cyan-500 text-background rounded-tr-none font-bold"
                           : msg.sender === "system"
-                          ? "bg-zinc-900/80 border border-zinc-800 text-[10px] text-zinc-400 text-center w-full"
-                          : "bg-slate-900 text-slate-200 border border-white/5 rounded-tl-none"
+                          ? "bg-muted/80 border border-card-border text-[11px] text-muted-foreground text-center w-full"
+                          : "bg-surface text-foreground border border-card-border rounded-tl-none"
                       }`}
                     >
                       {msg.text}
                     </div>
-                    <span className="text-[9px] text-slate-500 mt-1 font-mono">{msg.time}</span>
+                    <span className="text-[10px] text-muted-foreground mt-1.5 font-mono">{msg.time}</span>
                   </div>
                 ))
               )}
             </div>
 
             {/* Phone bottom input decoration */}
-            <div className="h-8 border-t border-white/5 flex items-center justify-between px-1 shrink-0 pt-1">
-              <div className="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center">
-                <span className="text-slate-400 text-[10px]">+</span>
+            <div className="h-10 border-t border-card-border flex items-center justify-between px-1 shrink-0 pt-2">
+              <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
+                <span className="text-muted-foreground text-xs font-bold">+</span>
               </div>
-              <div className="flex-1 bg-slate-900/70 border border-white/5 mx-2 rounded-full h-5 text-[9px] text-zinc-500 px-3 flex items-center">
+              <div className="flex-1 bg-input-bg border border-card-border mx-2 rounded-full h-6 text-xs text-muted-foreground px-4 flex items-center">
                 Read-only simulation
               </div>
-              <MessageSquare className="w-4 h-4 text-cyan-400" />
+              <MessageSquare className="w-5 h-5 text-cyan-400" />
             </div>
           </div>
 
           {/* Terminal Diagnostics System Outputs */}
-          <div className="flex-1 min-h-[140px] rounded-2xl bg-zinc-950 border border-red-500/10 p-3.5 font-mono text-[10px] flex flex-col gap-2 shadow-inner overflow-hidden">
-            <div className="flex items-center gap-1.5 pb-2 border-b border-white/5 font-bold text-[9px] text-slate-400">
-              <Terminal className="w-3.5 h-3.5 text-amber-500" />
+          <div className="glass-card flex-1 min-h-[180px] p-5 font-mono text-xs flex flex-col gap-3 shadow-inner overflow-hidden rounded-2xl">
+            <div className="flex items-center gap-2 pb-3 border-b border-card-border font-bold text-xs text-muted-foreground">
+              <Terminal className="w-4 h-4 text-amber-500" />
               <span>FLOWVERO LOG CONTROLLER MONITOR</span>
             </div>
-            <div className="flex-1 overflow-y-auto space-y-1.5 text-zinc-400 scrollbar-none pr-1">
+            <div className="flex-1 overflow-y-auto space-y-2 text-muted-foreground scrollbar-none pr-1">
               {logMessages.map((log, index) => (
                 <div key={index} className="leading-relaxed">
-                  <span className="text-slate-600 font-bold">[{new Date().toLocaleTimeString()}]</span>{" "}
+                  <span className="text-muted-foreground font-bold">[{new Date().toLocaleTimeString()}]</span>{" "}
                   <span
                     className={
                       log.includes("Completed")
-                        ? "text-emerald-400"
+                        ? "text-emerald-400 font-bold"
                         : log.includes("Entity") || log.includes("Fired")
-                        ? "text-cyan-400"
-                        : "text-zinc-400"
+                        ? "text-cyan-400 font-bold"
+                        : "text-muted-foreground"
                     }
                   >
                     {log}

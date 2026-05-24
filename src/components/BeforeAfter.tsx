@@ -18,78 +18,78 @@ export default function BeforeAfter() {
   ];
 
   return (
-    <div className="grid md:grid-cols-2 gap-8 items-stretch">
+    <div className="grid md:grid-cols-2 gap-12 items-stretch">
       {/* Before Flowvero - Red/Amber Glass Card */}
-      <div className="rounded-3xl border border-rose-500/10 bg-rose-950/5 hover:border-rose-500/25 transition-all duration-300 p-6 md:p-8 relative overflow-hidden flex flex-col justify-between">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-rose-500/5 rounded-full blur-2xl pointer-events-none -mr-8 -mt-8" />
+      <div className="glass-card glass-card-hover p-8 md:p-12 relative overflow-hidden flex flex-col justify-between !border-rose-500/20 hover:!border-rose-400/40 rounded-3xl">
+        <div className="absolute top-0 right-0 w-36 h-36 bg-rose-500/5 rounded-full blur-2xl pointer-events-none -mr-8 -mt-8" />
         
         <div>
           {/* Badge */}
-          <div className="flex justify-between items-center mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-rose-500/20 bg-rose-500/10 text-[10px] font-mono tracking-wider font-semibold text-rose-300">
+          <div className="flex justify-between items-center mb-8">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-rose-500/20 bg-rose-500/10 text-xs font-mono tracking-wider font-semibold text-rose-300">
               <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
               BEFORE FLOWVERO
             </span>
-            <AlertCircle className="w-5 h-5 text-rose-400" />
+            <AlertCircle className="w-6 h-6 text-rose-400" />
           </div>
 
-          <h3 className="text-2xl font-bold font-display text-white mb-2">The Scattered Revenue Leak</h3>
-          <p className="text-xs text-slate-400 mb-6 leading-relaxed">
+          <h3 className="text-3xl font-bold font-display text-foreground mb-3">The Scattered Revenue Leak</h3>
+          <p className="text-sm md:text-base text-muted-foreground mb-8 leading-relaxed">
             Standard operations lose prospects at every stage due to late follow-up and clerical errors.
           </p>
 
-          <hr className="border-rose-500/10 mb-6" />
+          <hr className="border-rose-500/10 mb-8" />
 
           {/* List */}
-          <div className="space-y-5">
+          <div className="space-y-6">
             {beforePoints.map((item, index) => (
-              <div key={index} className="flex gap-3.5 items-start">
-                <XCircle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
+              <div key={index} className="flex gap-4 items-start">
+                <XCircle className="w-6 h-6 text-rose-500 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-bold text-rose-200">{item.title}</h4>
-                  <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">{item.desc}</p>
+                  <h4 className="text-base font-bold text-rose-200">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="pt-8 border-t border-rose-500/10 mt-8 text-[11px] font-mono text-rose-400 flex items-center gap-1.5">
-          <Flame className="w-4 h-4 text-rose-400" />
+        <div className="pt-8 border-t border-rose-500/10 mt-8 text-xs md:text-sm font-mono text-rose-400 flex items-center gap-2">
+          <Flame className="w-5 h-5 text-rose-400" />
           <span>Prospects lost to instant-reply competitors.</span>
         </div>
       </div>
 
       {/* After Flowvero - Cyan/Green Glass Card */}
-      <div className="rounded-3xl border border-cyan-500/15 bg-slate-900/60 hover:border-cyan-400/30 transition-all duration-300 p-6 md:p-8 relative overflow-hidden flex flex-col justify-between">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/15 rounded-full blur-2xl pointer-events-none -mr-8 -mt-8" />
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none -ml-8 -mb-8" />
+      <div className="glass-card glass-card-hover p-8 md:p-12 relative overflow-hidden flex flex-col justify-between rounded-3xl">
+        <div className="absolute top-0 right-0 w-36 h-36 bg-cyan-500/15 rounded-full blur-2xl pointer-events-none -mr-8 -mt-8" />
+        <div className="absolute bottom-0 left-0 w-36 h-36 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none -ml-8 -mb-8" />
 
         <div>
           {/* Badge */}
-          <div className="flex justify-between items-center mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-[10px] font-mono tracking-wider font-semibold text-cyan-300 text-glow">
+          <div className="flex justify-between items-center mb-8">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-xs font-mono tracking-wider font-semibold text-cyan-300 text-glow">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
               AFTER FLOWVERO
             </span>
-            <Sparkles className="w-5 h-5 text-cyan-400 animate-pulse" />
+            <Sparkles className="w-6 h-6 text-cyan-400 animate-pulse" />
           </div>
 
-          <h3 className="text-2xl font-bold font-display text-white mb-2">The Automated Response Engine</h3>
-          <p className="text-xs text-slate-300 mb-6 leading-relaxed">
+          <h3 className="text-3xl font-bold font-display text-foreground mb-3">The Automated Response Engine</h3>
+          <p className="text-sm md:text-base text-muted-foreground mb-8 leading-relaxed">
             Predictable workflows hook and nurture prospective clients without using team manual effort.
           </p>
 
-          <hr className="border-cyan-500/15 mb-6" />
+          <hr className="border-cyan-500/15 mb-8" />
 
           {/* List */}
-          <div className="space-y-5">
+          <div className="space-y-6">
             {afterPoints.map((item, index) => (
-              <div key={index} className="flex gap-3.5 items-start">
-                <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+              <div key={index} className="flex gap-4 items-start">
+                <CheckCircle2 className="w-6 h-6 text-cyan-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-bold text-cyan-200">{item.title}</h4>
-                  <p className="text-[11px] text-slate-300 mt-1 leading-relaxed">{item.desc}</p>
+                  <h4 className="text-base font-bold text-cyan-200">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -97,8 +97,8 @@ export default function BeforeAfter() {
         </div>
 
         {/* Footnote */}
-        <div className="pt-8 border-t border-cyan-500/15 mt-8 text-[11px] font-mono text-cyan-300 flex items-center gap-1.5">
-          <Building2 className="w-4 h-4 text-cyan-400 animate-bounce" />
+        <div className="pt-8 border-t border-cyan-500/15 mt-8 text-xs md:text-sm font-mono text-cyan-300 flex items-center gap-2">
+          <Building2 className="w-5 h-5 text-cyan-400 animate-bounce" />
           <span>Pipeline fully visible. Lead qualification secured.</span>
         </div>
       </div>
